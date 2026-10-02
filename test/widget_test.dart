@@ -1,30 +1,15 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:jip_care/main.dart';
+import 'package:jip_care/app/app.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('home exposes the primary senior-friendly actions', (tester) async {
+    await tester.pumpWidget(const JipCareApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text('집케어'), findsOneWidget);
+    expect(find.text('매물 보기'), findsOneWidget);
+    expect(find.text('새 매물 등록'), findsOneWidget);
+    expect(find.text('연락처'), findsOneWidget);
+    expect(find.text('오늘 할 일'), findsOneWidget);
+    expect(find.text('설정 / 백업'), findsOneWidget);
   });
 }
